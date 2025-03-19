@@ -218,6 +218,10 @@ void parseAndExecuteCommands(String input) {
               pMode = P_ON_E;
               myPID.SetTunings(Kp, Ki, Kd, pMode); // apply the pid params to running config
             }
+        } else if (subcommand == "ST") {
+            D_print("Setting Sample Time to: ");
+            D_println(param.toDouble());
+            myPID.SetSampleTime(pSampleTime);
         }
     } else if (command == "OT1") {  
         D_println("Setting OT1: " + param);
