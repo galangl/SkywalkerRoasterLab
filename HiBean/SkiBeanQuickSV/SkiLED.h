@@ -6,7 +6,7 @@ const extern unsigned int LED_RED[3] = { 0, 10, 0 };
 const extern unsigned int LED_GREEN[3] = { 10, 0, 0 };
 const extern unsigned int LED_BLACK[3] = { 0, 0, 0 };
 
-char* currentLEDColor = "blue";
+String currentLEDColor = "blue";
 unsigned long LED_LAST_ON_MS = 0;
 const unsigned long LED_FLASH_DELAY_MS = 1000;
 
