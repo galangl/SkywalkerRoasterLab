@@ -249,7 +249,10 @@ void parseAndExecuteCommands(String input) {
                     param = param.substring(index+1); //trim string
                 }
             }
-            Kp, Ki, Kd = pidTune[0], pidTune[1], pidTune[2];
+            Kp = pidTune[0];
+            Ki = pidTune[1];
+            Kd = pidTune[2];
+            
             D_print("Kp: "); D_println(Kp); D_print("Ki: "); D_println(Ki); D_print("Kd: "); D_println(Kd);
             myPID.SetTunings(Kp, Ki, Kd, pMode); // apply the pid params to running config
         } else if (subcommand == "PM") {

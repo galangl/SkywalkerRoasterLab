@@ -17,7 +17,7 @@ public:
     void enableDebug(bool en) { debug = en; }
 
     // --- Structured Fields ---
-    uint16_t getTemperature(uint8_t *buf); // in °C units
+    double getTemperature(uint8_t *buf); // in °C units
 
 private:
     static void IRAM_ATTR edgeISR();
@@ -78,7 +78,7 @@ bool SkyRoasterParser::validate(const uint8_t *buf) {
     return (sum == buf[MSG_BYTES - 1]);
 }
 
-uint16_t SkyRoasterParser::getTemperature(uint8_t *buf) {
+double SkyRoasterParser::getTemperature(uint8_t *buf) {
     // Combine the first 4 bytes into a 16-bit integer (Little Endian)
     uint16_t rawTempX = ((buf[0] << 8) + buf[1]);
     uint16_t rawTempY = ((buf[2] << 8) + buf[3]);
