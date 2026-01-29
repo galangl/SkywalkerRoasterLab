@@ -1,1 +1,24 @@
-
+UEDX48480021_Skywalker_v2.6
+Main functions and operations:
+1.Nimble (can connect to 3 devices, mobile phone and computer at the same time).
+2.TX changed to RMT. (Note! USB CDC ON BOOT: Disabled when using RMT to burn)
+3. Press and hold the hardware button to forcefully reset the display driver, and when the UI moves up, it can be forced to restore.
+4. PID can be controlled by the touch screen. Press and hold Heat for two seconds to enter the target temperature setting. Rotate the knob to set the target temperature. Press and hold Heat for two seconds to confirm and automatically start heating.
+5. PID operation method on the screen:
+Press and hold the Heat number for two seconds to start the PID temperature setting. At this time, the temperature number starts to flash once per second.
+Rotate the knob to set the target temperature, up to 230 degrees C. Press and hold the Heat number again for two seconds to complete the setting. At this time, the temperature number stops flashing and returns to the normal temperature display and starts to automatically heat to the set temperature.
+If you press and hold the Heat number again for two seconds during heating, you can also enter the set temperature state and change the target temperature.
+If you press and hold the Heat number for four seconds during heating, the PID will stop immediately.
+When the setting is completed and automatic heating is started, Drum is started at the same time, and Fan is set to 40.
+When entering the settings, if there is no action for more than 10 seconds, the settings will be automatically exited. (User gives up)
+In this firmware architecture, whether it is a PID started by APP (mobile phone), computer (Artisan) or local machine (touch screen), the physical operation of the local machine has the highest real-time control (takeover right).
+Takeover to modify temperature (press and hold for 2 seconds):
+Even if Artisan is running a PID curve (for example, set to 200°C), if you press and hold the button for 2 seconds to enter "setting mode", the automatic PID calculation will be temporarily frozen (maintaining the current firepower).
+At this point you turn the knob to change the target to 210°C and confirm with another long press.
+After confirmation, the PID will immediately change to target 210°C and continue operation.
+Result: You have successfully overwritten your computer's settings.
+Forced stop of takeover (press and hold for 4 seconds):
+No matter who starts the PID, as long as you press and hold the button for 4 seconds, the firmware will execute setPIDMode(false).
+This will force the PID auto mode off and return the power to zero (unless you manually turn the power knob).
+Result: This is the highest priority "manual interrupt" and there is nothing the computer can do to prevent you from stopping it.
+You don't need to worry about the computer being unable to operate after it's connected. The touch screen and buttons can intervene at any time to modify the target temperature or force a switch back to manual mode. This is also an important safety mechanism.
