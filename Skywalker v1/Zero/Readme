@@ -1,0 +1,17 @@
+ESP32S3_Zero_Artisan_HiBean_Roaster_Control_v2.2
+TX:RMT.
+RX:ISR.
+Nimble.
+1.PID preheating parameter adjustment.
+2. Drum and Fan/50% are automatically started when PID is started (Hibean only).
+3.Cooling starts Fan/100% at the same time, turns off Heat, and automatically stops when the temperature drops to 50 degrees C.
+
+ESP32S3_Zero_Artisan_HiBean_Roaster_Control_v2.4
+v2.4
+Add Max6675 to detect ET
+Hardware wiring definition (ESP32-S3-Zero):
+MAX6675_SO = 4;
+MAX6675_CS = 5;
+MAX6675_SCK = 6;
+VCC -> 3.3V
+GND -> GND
