@@ -16,7 +16,7 @@
 // -----------------------------------------------------------------------------
 // Current Sketch and Release Version (for BLE device info)
 // -----------------------------------------------------------------------------
-String firmWareVersion = String("1.1.6");
+String firmWareVersion = String("1.1.7");
 String sketchName = String(__FILE__).substring(String(__FILE__).lastIndexOf('/')+1);
 
 // -----------------------------------------------------------------------------
@@ -41,8 +41,8 @@ std::queue<String> messageQueue;  // Holds commands written by Hibean to us
 double pInput, pOutput;
 double pSetpoint = 0.0; // Desired temperature (adjustable on the fly)
 int pMode = P_ON_M; // http://brettbeauregard.com/blog/2017/06/introducing-proportional-on-measurement/
-double Kp = 10.0, Ki = 0.5, Kd = 2.0; // pid calibrations for P_ON_M (adjustable on the fly)
-int pSampleTime = 2000; //ms (adjustable on the fly)
+double Kp = 9.5, Ki = 0.3, Kd = 3.0; // pid calibrations for pMode (adjustable on the fly)
+int pSampleTime = 500; //ms (adjustable on the fly)
 int manualHeatLevel = 50;
 PID myPID(&pInput, &pOutput, &pSetpoint, Kp, Ki, Kd, pMode, DIRECT);  //pid instance with our default values
 
